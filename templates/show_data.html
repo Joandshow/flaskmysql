@@ -15,14 +15,13 @@
         --table-header-bg: #007bff;
         --table-header-color: white;
         --table-row-hover-bg: #e9ecef;
-        --btn-bg: #ffc107; /* Light yellow background */
-        --btn-hover-bg: #e0a800; /* Darker yellow on hover */
+        --btn-bg: var(--primary-color);
+        --btn-hover-bg: #0056b3;
         --border-radius: 5px;
-        --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font style */
       }
 
       body {
-        font-family: var(--font-family); /* Apply consistent font across entire page */
+        font-family: Arial, sans-serif;
         background-color: var(--background-color);
         color: var(--font-color);
         margin: 0;
@@ -39,11 +38,11 @@
         border-radius: var(--border-radius);
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         width: 80%;
-        text-align: center; /* Center align the content */
       }
 
       h1 {
         color: var(--primary-color);
+        text-align: center;
         margin-bottom: 20px;
       }
 
@@ -88,25 +87,27 @@
       .btn {
         display: inline-block;
         padding: 10px 15px;
-        background-color: var(--btn-bg); /* Set light yellow color */
+        background-color: var(--btn-bg);
         color: white;
         border-radius: var(--border-radius);
         text-decoration: none;
         transition: background-color 0.3s;
         margin-top: 20px;
-        width: 200px; /* Set fixed width for the button */
       }
 
       .btn:hover {
-        background-color: var(--btn-hover-bg); /* Darker yellow on hover */
-      }
-
-      .btn-container {
-        margin-top: 20px; /* Space between table and button */
-        display: flex;
-        justify-content: center; /* Center align the button */
+        background-color: var(--btn-hover-bg);
       }
     </style>
+    <script type="text/javascript">
+      function confirmDelete(id) {
+        // Show a confirmation dialog
+        if (confirm("Are you sure you want to delete this record?")) {
+          // If confirmed, redirect to the delete URL
+          window.location.href = "/delete/" + id;
+        }
+      }
+    </script>
   </head>
   <body>
     <div class="container">
@@ -132,9 +133,8 @@
         </tr>
         {% endfor %}
       </table>
-      <div class="btn-container">
-        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
-      </div>
+      <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
     </div>
   </body>
 </html>
+
