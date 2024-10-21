@@ -15,8 +15,8 @@
         --table-header-bg: #007bff;
         --table-header-color: white;
         --table-row-hover-bg: #e9ecef;
-        --btn-bg: var(--primary-color);
-        --btn-hover-bg: #0056b3;
+        --btn-bg: #28a745; /* Light green */
+        --btn-hover-bg: #218838; /* Darker green */
         --border-radius: 5px;
       }
 
@@ -38,11 +38,11 @@
         border-radius: var(--border-radius);
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
         width: 80%;
+        text-align: center; /* Center align content */
       }
 
       h1 {
         color: var(--primary-color);
-        text-align: center;
         margin-bottom: 20px;
       }
 
@@ -85,14 +85,15 @@
       }
 
       .btn {
-        display: inline-block;
+        display: block;
         padding: 10px 15px;
         background-color: var(--btn-bg);
         color: white;
         border-radius: var(--border-radius);
         text-decoration: none;
         transition: background-color 0.3s;
-        margin-top: 20px;
+        margin: 20px auto; /* Center the button */
+        width: fit-content;
       }
 
       .btn:hover {
