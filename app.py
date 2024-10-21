@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, flash
 import mysql.connector
 from dotenv import load_dotenv
 import os
@@ -119,8 +119,8 @@ def update_data(id):
                 cursor.close()
                 connection.close()
 
-# Route to delete data from the test table
-@app.route('/delete/<int:id>')
+# Route to delete data from the test table (now using POST method)
+@app.route('/delete/<int:id>', methods=['POST'])
 def delete_data(id):
     try:
         # Connect to the MySQL database
@@ -131,6 +131,8 @@ def delete_data(id):
         query = "DELETE FROM test WHERE id=%s"
         cursor.execute(query, (id,))
         connection.commit()
+
+        flash('Data deleted successfully!')  # Optional flash message
 
         return redirect(url_for('show_data'))
 
